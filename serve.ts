@@ -4,7 +4,7 @@ addEventListener("fetch", (event) => {
       importMetaMain: import.meta.main,
       importMetaURL: import.meta.url,
       cwd: Deno.cwd(),
-      url: event.request.url,
+      requestURL: event.request.url,
     }), {
       status: 200,
       headers: {
