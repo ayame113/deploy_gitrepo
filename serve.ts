@@ -1,10 +1,10 @@
 addEventListener("fetch", (event) => {
   event.respondWith(
     new Response(JSON.stringify({
-      importMetaMain: import.meta.main,
-      importMetaURL: import.meta.url,
-      cwd: Deno.cwd(),
-      requestURL: event.request.url,
+      "import.meta.main": import.meta.main,
+      "import.meta.url": import.meta.url,
+      "Deno.cwd()": Deno.cwd(),
+      "event.request.url": event.request.url,
     }), {
       status: 200,
       headers: {
