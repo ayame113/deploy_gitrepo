@@ -7,33 +7,56 @@ async function handleHttp(conn: Deno.Conn, {
   owner,
   repo,
   tokenKey,
+  converters = [],
 }: {
   owner: string;
   repo: string;
   tokenKey?: string;
+  converters?: {
+    match: RegExp;
+    convert: (arg: {
+      url: URL;
+      content: string;
+    }) =>
+      | { content: string; headers: Record<string, string> }
+      | Promise<{ content: string; headers: Record<string, string> }>;
+  }[];
 }) {
   for await (const event of Deno.serveHttp(conn)) {
     try {
-      const [branch, ...pathList] = new URL(event.request.url).pathname.slice(1)
+      const url = new URL(event.request.url);
+      const [branch, ...pathList] = url.pathname.slice(1)
         .split("/");
+      let content = await getFile({
+        owner,
+        repo,
+        path: pathList.join("/"),
+        branch,
+        tokenKey,
+      });
+      let headers = {
+        "content-type": contentType(path.extname(event.request.url)) ??
+          "text/plain",
+      };
+      for (const converter of converters) {
+        if (converter.match.test(event.request.url)) {
+          const converted = (await converter.convert({
+            url,
+            content,
+          }));
+          content = converted.content;
+          headers = {
+            ...headers,
+            ...converted.headers,
+          };
+          break;
+        }
+      }
       event.respondWith(
-        new Response(
-          await getFile({
-            owner,
-            repo,
-            path: pathList.join("/"),
-            branch,
-            tokenKey,
-          }),
-          {
-            status: 200,
-            headers: {
-              "content-type": contentType(path.extname(event.request.url)) ??
-                "text/plain",
-              "Access-Control-Allow-Origin": "*",
-            },
-          },
-        ),
+        new Response(content, {
+          status: 200,
+          headers,
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -42,7 +65,6 @@ async function handleHttp(conn: Deno.Conn, {
           status: 404,
           headers: {
             "content-type": "text/plain",
-            "Access-Control-Allow-Origin": "*",
           },
         }),
       );
@@ -54,12 +76,22 @@ export async function serve({
   owner,
   repo,
   tokenKey,
+  converters,
 }: {
   owner: string;
   repo: string;
   tokenKey?: string;
+  converters?: {
+    match: RegExp;
+    convert: (arg: {
+      url: URL;
+      content: string;
+    }) =>
+      | { content: string; headers: Record<string, string> }
+      | Promise<{ content: string; headers: Record<string, string> }>;
+  }[];
 }) {
   for await (const conn of Deno.listen({ port: 80 })) {
-    handleHttp(conn, { owner, repo, tokenKey });
+    handleHttp(conn, { owner, repo, tokenKey, converters });
   }
 }
