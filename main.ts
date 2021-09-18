@@ -1,7 +1,9 @@
 import { serve } from "./serve.ts";
 
 const converters = [{
-  match: /(.*)\?js=true/,
+  match(request: Request) {
+    return !request.headers.get("user-agent")?.includes("Deno");
+  },
   convert({ content }: { url: URL; content: string }) {
     return {
       content,
@@ -12,7 +14,9 @@ const converters = [{
     };
   },
 }, {
-  match: /(.*)/,
+  match() {
+    return true;
+  },
   convert({ content }: { url: URL; content: string }) {
     return {
       content,

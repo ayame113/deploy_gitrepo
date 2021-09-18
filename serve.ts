@@ -13,7 +13,7 @@ async function handleHttp(conn: Deno.Conn, {
   repo: string;
   tokenKey?: string;
   converters?: {
-    match: RegExp;
+    match: (req: Request) => boolean;
     convert: (arg: {
       url: URL;
       content: string;
@@ -39,7 +39,7 @@ async function handleHttp(conn: Deno.Conn, {
           "text/plain",
       };
       for (const converter of converters) {
-        if (converter.match.test(event.request.url)) {
+        if (converter.match(event.request)) {
           const converted = (await converter.convert({
             url,
             content,
@@ -82,7 +82,7 @@ export async function serve({
   repo: string;
   tokenKey?: string;
   converters?: {
-    match: RegExp;
+    match: (req: Request) => boolean;
     convert: (arg: {
       url: URL;
       content: string;
