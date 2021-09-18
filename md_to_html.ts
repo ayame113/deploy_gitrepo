@@ -5,7 +5,7 @@ await ammonia.init();
 export function mdToHTML({ content }: { content: string }) {
   return {
     content:
-      `<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"></head><body>${
+      `<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"></head><body class="markdown-body">${
         ammonia.clean(marked(content))
       }</body>`,
     headers: {
