@@ -9,6 +9,7 @@ export function tsToJs({ content }: { content: string }) {
           syntax: "typescript",
         },
       },
+      // deno-lint-ignore no-explicit-any
     } as any).code,
     headers: {
       "content-type": "application/javascript",
