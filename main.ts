@@ -5,7 +5,10 @@ const converters = [{
   convert({ content }: { url: URL; content: string }) {
     return {
       content,
-      headers: { "content-type": "application/javascript" },
+      headers: {
+        "content-type": "application/javascript",
+        "Access-Control-Allow-Origin": "*",
+      },
     };
   },
 }, {
