@@ -13,27 +13,39 @@ async function handleHttp(conn: Deno.Conn, {
   tokenKey?: string;
 }) {
   for await (const event of Deno.serveHttp(conn)) {
-    const [branch, ...pathList] = new URL(event.request.url).pathname.slice(1)
-      .split("/");
-    event.respondWith(
-      new Response(
-        await getFile({
-          owner,
-          repo,
-          path: pathList.join("/"),
-          branch,
-          tokenKey,
-        }),
-        {
-          status: 200,
+    try {
+      const [branch, ...pathList] = new URL(event.request.url).pathname.slice(1)
+        .split("/");
+      event.respondWith(
+        new Response(
+          await getFile({
+            owner,
+            repo,
+            path: pathList.join("/"),
+            branch,
+            tokenKey,
+          }),
+          {
+            status: 200,
+            headers: {
+              "content-type": contentType(path.extname(event.request.url)) ??
+                "text/plain",
+              "Access-Control-Allow-Origin": "*",
+            },
+          },
+        ),
+      );
+    } catch (error) {
+      event.respondWith(
+        new Response((error?.message ?? "") + "Not Found", {
+          status: 404,
           headers: {
-            "content-type": contentType(path.extname(event.request.url)) ??
-              "text/plain",
+            "content-type": "text/plain",
             "Access-Control-Allow-Origin": "*",
           },
-        },
-      ),
-    );
+        }),
+      );
+    }
   }
 }
 
