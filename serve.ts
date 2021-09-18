@@ -37,7 +37,7 @@ async function handleHttp(conn: Deno.Conn, {
   }
 }
 
-export function serve({
+export async function serve({
   owner,
   repo,
   tokenKey,
