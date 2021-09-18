@@ -25,27 +25,18 @@ const ammonia = new Ammonia(builder);
 
 export function mdToHTML({ content }: { content: string }) {
   return {
-    content: `<head>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css">
-      <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.2.0/styles/default.min.css">
-      </head><body class="markdown-body">${
-      ammonia.clean(marked(content))
-    }</body>`,
+    content: `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css">
+          <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.2.0/styles/default.min.css">
+        </head>
+        <body class="markdown-body">${ammonia.clean(marked(content))}</body>
+      </html>
+    `,
     headers: {
       "content-type": "text/html",
     },
   };
-} /*
-console.log(
-  mdToHTML({
-    content: `
-# a
-
-\`\`\`js
-
-console.log('aaa');
-\`\`\`
-	`,
-  }).content,
-);
-*/
+}
