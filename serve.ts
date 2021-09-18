@@ -36,8 +36,9 @@ async function handleHttp(conn: Deno.Conn, {
         ),
       );
     } catch (error) {
+      console.log(error);
       event.respondWith(
-        new Response((error?.message ?? "") + "Not Found", {
+        new Response("404 Not Found", {
           status: 404,
           headers: {
             "content-type": "text/plain",
