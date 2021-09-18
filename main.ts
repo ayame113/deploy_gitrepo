@@ -1,6 +1,6 @@
-import {serve} from "..."
+import { serve } from "./serve.ts";
 
 serve({
-  repogitry: "ayame113/ay_deno_utils",
-  token: Deno.env.get("...")
-})
+  owner: "ayame113",
+  repo: "ay_deno_utils",
+});
