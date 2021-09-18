@@ -1,23 +1,16 @@
 import { serve } from "./serve.ts";
+import { tsToJs } from "./ts_to_js.ts";
 
 const converters = [{
   match(request: Request) {
     return !request.headers.get("user-agent")?.includes("Deno");
   },
-  convert({ content }: { url: URL; content: string }) {
-    return {
-      content,
-      headers: {
-        "content-type": "application/javascript",
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-  },
+  convert: tsToJs,
 }, {
   match() {
     return true;
   },
-  convert({ content }: { url: URL; content: string }) {
+  convert({ content }: { content: string }) {
     return {
       content,
       headers: {
