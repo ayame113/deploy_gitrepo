@@ -12,7 +12,7 @@ addEventListener("fetch", (event) => {
         2,
       ),
       {
-        headers: { "content-type": "application/json; charset=UTF-8" },
+        headers: { "content-type": "application/javascript; charset=UTF-8" },
       },
     ),
   );
