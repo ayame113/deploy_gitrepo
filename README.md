@@ -1,18 +1,25 @@
 # deploy_gitrepo
 
-Provide your github repository as is from deno deploy.
+A very simple server that hosts a github repository as-is with
+[deno deploy](https://deno.com/deploy).
 
-You can also convert the content with the `converters` option. for example:
-
-- TypeScript -> JavaScript
-- markdown -> HTML
+- Specify the version in the URL. (ex:
+  `https://<your domain>/<version>/<path to file>`)
+- You can retrieve data from the github API using personal access token
+  authentication.
+- You can also convert the content with the `converters` option. for example:
+  - TypeScript -> JavaScript
+  - markdown -> HTML
 
 ```ts
-import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.1/serve.ts";
-import { tsToJs } from "https://deploy-gitrepo.deno.dev/v0.0.1/ts_to_js.ts";
-import { mdToHTML } from "https://deploy-gitrepo.deno.dev/v0.0.1/md_to_html.ts";
+import {
+  mdToHTML,
+  serve,
+  tsToJs,
+} from "https://deploy-gitrepo.deno.dev/v0.0.1/md_to_html.ts";
 
 const converters = [{
+  // When `match` returns true, the` convert` function is called. (The first matching converter will be used.)
   match: (request: Request) => new URL(request.url).pathname.endsWith(".md"),
   convert: mdToHTML,
 }, {
@@ -28,8 +35,9 @@ const converters = [{
 }];
 
 serve({
-  owner: "ayame113",
-  repo: "deploy_gitrepo",
-  converters,
+  owner: "your_account_name",
+  repo: "your_repository_name",
+  converters, // optional: Converting file content
+  tokenKey: "tokenKey", // optional: The key of the environment variable that stores the personal access token of github
 });
 ```

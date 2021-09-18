@@ -10,9 +10,9 @@ marked.setOptions({
   renderer: new marked.Renderer(),
   langPrefix: "hljs language-",
   highlight: function (code, lang) {
-    // @ts-ignore
+    // @ts-ignore: hljs type definition does not exist
     const language = hljs.getLanguage(lang) ? lang : "plaintext";
-    // @ts-ignore
+    // @ts-ignore: hljs type definition does not exist
     return hljs.highlight(code, { language }).value;
   },
   gfm: true,
