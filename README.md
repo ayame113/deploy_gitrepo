@@ -1,5 +1,7 @@
 # deploy_gitrepo
 
+![stars](https://img.shields.io/github/stars/ayame113/deploy_gitrepo?style=social)
+
 A very simple server that hosts a github repository as-is with
 [deno deploy](https://deno.com/deploy).
 
@@ -41,3 +43,7 @@ serve({
   tokenKey: "tokenKey", // optional: The key of the environment variable that stores the personal access token of github
 });
 ```
+
+# Link
+
+[github](https://github.com/ayame113/deploy_gitrepo)
