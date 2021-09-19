@@ -16,7 +16,7 @@ A very simple server that hosts a github repository as-is with
   - TypeScript -> JavaScript
   - markdown -> HTML
 
-[This website](https://deploy-gitrepo.deno.dev/v0.0.1/README.md) is hosted by
+[This website](https://deploy-gitrepo.deno.dev/v0.0.2/README.md) is hosted by
 deploy_gitrepo.
 
 ```ts
@@ -24,7 +24,7 @@ import {
   mdToHTML,
   serve,
   tsToJs,
-} from "https://deploy-gitrepo.deno.dev/v0.0.1/mod.ts";
+} from "https://deploy-gitrepo.deno.dev/v0.0.2/mod.ts";
 
 const converters = [{
   // When `match` returns true, the` convert` function is called. (The first matching converter will be used.)
