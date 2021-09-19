@@ -39,7 +39,7 @@ export function mdToHTML({ content }: { content: string }) {
       </html>
     `,
     headers: {
-      "content-type": "text/html",
+      "content-type": "text/html; charset=utf-8",
     },
   };
 }

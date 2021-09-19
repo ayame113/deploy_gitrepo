@@ -12,7 +12,7 @@ export function tsToJs({ content }: { content: string }) {
       // deno-lint-ignore no-explicit-any
     } as any).code,
     headers: {
-      "content-type": "application/javascript",
+      "content-type": "application/javascript; charset=utf-8",
       "Access-Control-Allow-Origin": "*",
     },
   };
