@@ -21,7 +21,7 @@ import {
   mdToHTML,
   serve,
   tsToJs,
-} from "https://deploy-gitrepo.deno.dev/v0.0.1/md_to_html.ts";
+} from "https://deploy-gitrepo.deno.dev/v0.0.1/mod.ts";
 
 const converters = [{
   // When `match` returns true, the` convert` function is called. (The first matching converter will be used.)

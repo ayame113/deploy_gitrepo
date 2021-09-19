@@ -59,7 +59,7 @@ async function handleHttp(conn: Deno.Conn, {
         }),
       );
     } catch (error) {
-      console.log(error);
+      console.log(event.request.url, error);
       event.respondWith(
         new Response("404 Not Found", {
           status: 404,
