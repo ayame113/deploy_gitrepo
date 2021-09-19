@@ -1,11 +1,12 @@
-import marked from "https://esm.sh/marked";
+import marked from "https://esm.sh/marked@3.0.4";
 import {
   Ammonia,
   AmmoniaBuilder,
   init,
 } from "https://deno.land/x/ammonia@0.3.1/mod.ts";
-import hljs from "https://jspm.dev/highlight.js";
+import hljs from "https://jspm.dev/highlight.js@11.2.0";
 
+// setup markd
 marked.setOptions({
   renderer: new marked.Renderer(),
   langPrefix: "hljs language-",
@@ -17,6 +18,8 @@ marked.setOptions({
   },
   gfm: true,
 });
+
+// setup ammonia
 await init();
 const builder = new AmmoniaBuilder();
 builder.genericAttributes.add("class");
