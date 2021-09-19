@@ -13,6 +13,9 @@ A very simple server that hosts a github repository as-is with
   - TypeScript -> JavaScript
   - markdown -> HTML
 
+[This website](https://deploy-gitrepo.deno.dev/v0.0.1/README.md) is hosted by
+deploy_gitrepo.
+
 ```ts
 import {
   mdToHTML,
