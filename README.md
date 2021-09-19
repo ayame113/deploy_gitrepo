@@ -1,3 +1,6 @@
+⚠️ Currently, it takes 8 seconds to load the module, so it cannot be deployed
+normally. The first few requests fail due to a CPU time limit. ⚠️ (；ﾟДﾟ)
+
 # deploy_gitrepo
 
 ![stars](https://img.shields.io/github/stars/ayame113/deploy_gitrepo?style=social)
