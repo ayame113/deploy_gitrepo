@@ -92,7 +92,7 @@ serve({
 });
 ```
 
-⚠️ Due to the CPU time limit of the deployment, it can be difficult to do
+⚠️ Due to the CPU time limit of the deployment, it can be difficult to include
 markdown conversion and TypeScript conversion at the same time. Both use wasm.
 This may be resolved at https://github.com/denoland/deploy_feedback/issues/95.
 
