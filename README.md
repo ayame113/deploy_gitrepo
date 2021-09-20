@@ -13,7 +13,7 @@ Place `serve.ts` in your repository with the following:
 
 ```ts
 // serve.ts
-import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.2/serve.ts";
+import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.3/serve.ts";
 
 serve({
   owner: "your_account_name",
@@ -36,13 +36,13 @@ integration".
 ### Specify the `converters` option to convert the content.
 
 - You can convert markdown to HTML and use it as an alternative to github pages.
-  - [This website](https://deploy-gitrepo.deno.dev/v0.0.2/README.md) is hosted
+  - [This website](https://deploy-gitrepo.deno.dev/v0.0.3/README.md) is hosted
     by deploy_gitrepo.
 
 ```ts
 // serve.ts
-import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.2/serve.ts";
-import { mdToHTML } from "https://deploy-gitrepo.deno.dev/v0.0.2/md_to_html.ts";
+import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.3/serve.ts";
+import { mdToHTML } from "https://deploy-gitrepo.deno.dev/v0.0.3/md_to_html.ts";
 
 const converters = [{
   // When `match` returns true, the` convert` function is called.
@@ -65,8 +65,8 @@ serve({
 
 ```ts
 // serve.ts
-import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.2/serve.ts";
-import { tsToJs } from "https://deploy-gitrepo.deno.dev/v0.0.2/ts_to_js.ts";
+import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.3/serve.ts";
+import { tsToJs } from "https://deploy-gitrepo.deno.dev/v0.0.3/ts_to_js.ts";
 
 const converters = [{
   // Only the first matching converter will be used.
@@ -106,7 +106,7 @@ This may be resolved at https://github.com/denoland/deploy_feedback/issues/95.
 
 ```ts
 // serve.ts
-import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.2/serve.ts";
+import { serve } from "https://deploy-gitrepo.deno.dev/v0.0.3/serve.ts";
 
 serve({
   owner: "your_account_name",
