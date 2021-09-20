@@ -36,8 +36,8 @@ integration".
 ### Specify the `converters` option to convert the content.
 
 - You can convert markdown to HTML and use it as an alternative to github pages.
-- [This website](https://deploy-gitrepo.deno.dev/v0.0.2/README.md) is hosted by
-  deploy_gitrepo.
+  - [This website](https://deploy-gitrepo.deno.dev/v0.0.2/README.md) is hosted
+    by deploy_gitrepo.
 
 ```ts
 // serve.ts
@@ -58,10 +58,10 @@ serve({
 ```
 
 - You can convert TypeScript to JavaScript and use it to deliver ES Modules.
-- This example returns TypeScript when accessed from Deno and transpiled
-  JavaScript when accessed from a non-Deno (browser).
-- Override the response headers by setting the `headers` property in the return
-  value of the convert function.
+  - This example returns TypeScript when accessed from Deno and transpiled
+    JavaScript when accessed from a non-Deno (browser).
+  - Override the response headers by setting the `headers` property in the
+    return value of the convert function.
 
 ```ts
 // serve.ts
