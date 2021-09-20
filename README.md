@@ -77,7 +77,7 @@ const converters = [{
 }, {
   match: (request: Request) => {
     const { pathname } = new URL(request.url);
-    return pathname.endsWith(".ts") || pathname.endsWith(".ts");
+    return pathname.endsWith(".ts") || pathname.endsWith(".js");
   },
   convert: ({ content }: { content: string }) => ({
     content,
