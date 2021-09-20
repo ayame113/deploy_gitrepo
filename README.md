@@ -88,8 +88,7 @@ const converters = [{
 serve({
   owner: "your_account_name",
   repo: "your_repository_name",
-  converters, // optional: Converting file content
-  tokenKey: "tokenKey", // optional: The key of the environment variable that stores the personal access token of github
+  converters,
 });
 ```
 
