@@ -5,7 +5,7 @@
 A very simple server for creating mirroring sites of github with
 [deno deploy](https://deno.com/deploy).
 
-## How to use?
+# How to use?
 
 ### First Step
 
@@ -26,7 +26,7 @@ serve({
 Sign up for deno deploy, create a new project, and register serve.ts in "git
 integration".
 
-## Feature
+# Feature
 
 ### Supports version control of git tags.
 
