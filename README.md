@@ -1,6 +1,6 @@
 # deploy_gitrepo
 
-![stars](https://img.shields.io/github/stars/ayame113/deploy_gitrepo?style=social)
+[![star this repo](https://img.shields.io/github/stars/ayame113/deploy_gitrepo?style=social)](https://github.com/ayame113/deploy_gitrepo)
 
 A very simple server for creating mirroring sites of github with
 [deno deploy](https://deno.com/deploy).
