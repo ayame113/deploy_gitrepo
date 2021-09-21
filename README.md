@@ -5,6 +5,11 @@
 This module provides a very simple server for creating github mirroring sites
 with [deno deploy](https://deno.com/deploy).
 
+# What is this?
+
+This module is available in the code for deno deploy. However, it uses
+`Deno.listen ()`, so it also works with the deno CLI.
+
 # How to use?
 
 ### First Step
@@ -114,11 +119,6 @@ serve({
   tokenKey: "key_of_token", // The key of the environment variable that stores the personal access token of github. (in short, `Deno.env.get("key_of_token")==="<your_token>"`)
 });
 ```
-
-# What is this?
-
-This module is available in the code for deno deploy. However, it uses
-`Deno.listen ()`, so it also works with the deno CLI.
 
 # Link
 
