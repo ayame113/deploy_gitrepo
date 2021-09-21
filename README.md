@@ -2,8 +2,8 @@
 
 [![star this repo](https://img.shields.io/github/stars/ayame113/deploy_gitrepo?style=social)](https://github.com/ayame113/deploy_gitrepo)
 
-A very simple server for creating mirroring sites of github with
-[deno deploy](https://deno.com/deploy).
+This module provides a very simple server for creating github mirroring sites
+with [deno deploy](https://deno.com/deploy).
 
 # How to use?
 
@@ -114,6 +114,11 @@ serve({
   tokenKey: "key_of_token", // The key of the environment variable that stores the personal access token of github. (in short, `Deno.env.get("key_of_token")==="<your_token>"`)
 });
 ```
+
+# What is this?
+
+This module is available in the code for deno deploy. However, it uses
+`Deno.listen ()`, so it also works with the deno CLI.
 
 # Link
 
