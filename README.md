@@ -64,7 +64,7 @@ serve({
 ```
 
 - You can convert TypeScript to JavaScript and use it to deliver ES Modules.
-  - This example returns TypeScript when accessed from Deno and transpiled
+  - This example returns TypeScript when accessed from Deno and transpiled to
     JavaScript when accessed from a non-Deno (browser).
   - Override the response headers by setting the `headers` property in the
     return value of the convert function.
