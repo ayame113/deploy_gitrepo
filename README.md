@@ -8,7 +8,8 @@ with [deno deploy](https://deno.com/deploy).
 # What is this?
 
 This module is available in the code for deno deploy. However, it uses
-`Deno.listen ()`, so it also works with the deno CLI.
+`Deno.listen ()`, so it also works with the deno CLI. I made this to increase
+the options other than deno.land that can be used to publish the module.
 
 # How to use?
 
